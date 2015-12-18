@@ -13,12 +13,13 @@ Version: 0.1.7
 Author: Johannes Burkhardt <johannes.burkhardt@gmail.com>, Matthias Bannert
     <matthias.bannert@gmail.com>
 Maintainer: Johannes Burkhardt <johannes.burkhardt@gmail.com>
-Depends:
+Depends: 
     R (>= 3.0.0)
-Imports:
+Imports: 
     RCurl,
     rjson
 License: MIT + file LICENSE
 URL: https://github.com/jburkhardt/RAdwords, http://www.google.com/adwords/
 BugReports: https://github.com/jburkhardt/RAdwords/issues
 RoxygenNote: 5.0.1
+Suggests: data.table
