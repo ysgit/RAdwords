@@ -1,7 +1,7 @@
 PackratFormat: 1.4
 PackratVersion: 0.4.4.6
 RVersion: 3.2.3
-Repos: CRAN=http://cran.rstudio.com/
+Repos: CRAN=https://cran.rstudio.com/
 
 Package: RCurl
 Source: CRAN

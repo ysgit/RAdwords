@@ -34,7 +34,8 @@ statement <- function(select= c("AccountDescriptiveName",
                       report="ACCOUNT_PERFORMANCE_REPORT",
                       where,
                       start="2017-01-01",
-                      end="2017-01-10"){  
+                      end="2017-01-10",
+                      compress=F){  
   # Generates and builds the Adwords Query Language Statement for querying the Adwords API.
   #
   # Args:
@@ -52,20 +53,22 @@ statement <- function(select= c("AccountDescriptiveName",
   start <- gsub("-","",start)
   end <- gsub("-","",end)
   selectA <- paste(select,collapse=",")
+  fmt <- if(compress) "GZIPPED_CSV" else "CSV"
   if(missing(where)){
     #body <- paste("__rdquery=SELECT+",selectA,"+FROM+",report,"+DURING+",start,",",end,"&__fmt=CSV",sep='')
-    body <- sprintf("__rdquery=SELECT+%s+FROM+%s+DURING+%s,%s&__fmt=CSV",selectA,report,start,end)
+    body <- sprintf("__rdquery=SELECT+%s+FROM+%s+DURING+%s,%s&__fmt=%s",selectA,report,start,end,fmt)
   }
   if(!missing(where)){
     #body <- paste("__rdquery=SELECT+",selectA,"+FROM+",report,"+WHERE+",where,"+DURING+",start,",",end,"&__fmt=CSV",sep='')
-    body <- sprintf("__rdquery=SELECT+%s+FROM+%s+WHERE+%s+DURING+%s,%s&__fmt=CSV",selectA,report,where,start,end)
+    body <- sprintf("__rdquery=SELECT+%s+FROM+%s+WHERE+%s+DURING+%s,%s&__fmt=%s",selectA,report,where,start,end,fmt)
   }
   if(report == "LABEL_REPORT"){
     #body <- paste("__rdquery=SELECT+",selectA,"+FROM+",report,"&__fmt=CSV",sep='')
-    body <- sprintf("__rdquery=SELECT+%s+FROM+%s&__fmt=CSV",selectA,report)
+    body <- sprintf("__rdquery=SELECT+%s+FROM+%s&__fmt=%s",selectA,report,fmt)
     print("The Adwords API does not support date ranges in the Label Report. Thus, date ranges will be ignored in the Label Report")
   }
   # attach report Type as attributes of body
   attr(body,"reportType") <- report  
+  attr(body,"compressed") <- compress
   return(body)
 }

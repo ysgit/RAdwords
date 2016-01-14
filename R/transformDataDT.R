@@ -19,7 +19,7 @@ transformDataDT <- function(data, report, apiVersion){
   data <- suppressWarnings(data.table::fread(data))
   
   if(nrow(data)>0){
-    if(data[nrow(data), 1] == "Total"){
+    if(tail(data[[1]],n=1) == "Total"){
       data <- head(data, n=-1)
     }  
   }
@@ -44,7 +44,7 @@ transformDataDT <- function(data, report, apiVersion){
   doubleVar <- reportType[Type == 'Double', Display.Name]
   
   #find variables containing %
-  perVar <- data[, names(which(sapply(.SD, function(x) length(grep('%', x))>0))), .SDcols=doubleVar]
+  perVar <- data[, names(which(sapply(.SD, function(x) length(grep('%', x))>0))), .SDcols=intersect(doubleVar, names(data))]
   
   #transform variable of type double which contain %
   if(length(perVar)>0) {
