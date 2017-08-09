@@ -23,7 +23,7 @@ transformData <- function(data,
   # Returns:
   #   R Dataframe
   if (requireNamespace("data.table", quietly = TRUE)) {
-    return(transformDataDT(data, report))
+    return(transformDataDT(data, report, apiVersion))
   } 
   
   data <- read.csv2(text=data,sep=",",header=F)[-1,]#textConnection(data)

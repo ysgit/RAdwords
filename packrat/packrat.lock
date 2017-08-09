@@ -1,18 +1,38 @@
 PackratFormat: 1.4
-PackratVersion: 0.4.4.6
-RVersion: 3.2.3
+PackratVersion: 0.4.8.1
+RVersion: 3.4.1
 Repos: CRAN=https://cran.rstudio.com/
+
+Package: BH
+Source: CRAN
+Version: 1.62.0-1
+Hash: 14dfb3e8ffe20996118306ff4de1fab2
+
+Package: R6
+Source: CRAN
+Version: 2.2.2
+Hash: b2366cd9d2f3851a5704b4e192b985c2
 
 Package: RCurl
 Source: CRAN
-Version: 1.95-4.6
-Hash: f07380ac0925611455ecf9dcdb8be545
+Version: 1.95-4.8
+Hash: 79c7d5a8684e44e0e3426d3093aa7d90
 Requires: bitops
 
 Package: Rcpp
 Source: CRAN
-Version: 0.12.2
-Hash: 1928c2b7372e3f033217335f3fad25a3
+Version: 0.12.12
+Hash: 8b3d5ebb9a9a4ab5c86b3a81b0cfb774
+
+Package: assertthat
+Source: CRAN
+Version: 0.2.0
+Hash: e8805df54c65ac96d50235c44a82615c
+
+Package: backports
+Source: CRAN
+Version: 1.1.0
+Hash: 3f754426ca2b7dbbf63951fe5075373b
 
 Package: bitops
 Source: CRAN
@@ -26,19 +46,34 @@ Hash: 931f9972deae0f205e1c78a51f33149b
 
 Package: chron
 Source: CRAN
-Version: 2.3-47
-Hash: d25d96d908cd21080f24c89eed4c80a0
+Version: 2.3-50
+Hash: 86ef5f32dd2ef3c4076e52e7c89740b3
+
+Package: commonmark
+Source: CRAN
+Version: 1.2
+Hash: 1290583b9d16fb60322126a8698fb729
+
+Package: crayon
+Source: CRAN
+Version: 1.3.2
+Hash: 576a9d297a567d6a5ebd164ca5221590
 
 Package: data.table
 Source: CRAN
-Version: 1.9.6
-Hash: f92ef1f73afa43bf6fd69a22f3794abd
-Requires: chron
+Version: 1.10.4
+Hash: 2c7c47ccb40d01c7b214c8eff818108d
+
+Package: desc
+Source: CRAN
+Version: 1.1.1
+Hash: 2f99e95211c4ba6efcf5538d096587fc
+Requires: R6, assertthat, crayon, rprojroot
 
 Package: digest
 Source: CRAN
-Version: 0.6.8
-Hash: de202f956596a476d09304e3a2ebf1e5
+Version: 0.6.12
+Hash: e53fb8c58673df868183697e39a6a4d6
 
 Package: magrittr
 Source: CRAN
@@ -46,13 +81,9 @@ Version: 1.5
 Hash: bdc4d48c3135e8f3b399536ddf160df4
 
 Package: packrat
-Source: github
-Version: 0.4.4-6
-Hash: 1b529f25f45656922d063f340152b457
-GithubRepo: packrat
-GithubUsername: rstudio
-GithubRef: master
-GithubSha1: dfd1c904a0feb74422233f393cc324daf6517ea0
+Source: CRAN
+Version: 0.4.8-1
+Hash: 6ad605ba7b4b476d84be6632393f5765
 
 Package: rjson
 Source: CRAN
@@ -61,17 +92,30 @@ Hash: def074f38d0cff3b597649ee6f976128
 
 Package: roxygen2
 Source: CRAN
-Version: 5.0.1
-Hash: 764de5dbf10bcd671fde95798bf96112
-Requires: Rcpp, brew, digest, stringi, stringr
+Version: 6.0.1
+Hash: 82a85278378502d37455fcfc84951433
+Requires: R6, Rcpp, brew, commonmark, desc, digest, stringi, stringr,
+    xml2
+
+Package: rprojroot
+Source: CRAN
+Version: 1.2
+Hash: fdcac51a7f47decd60556ceefc3c26b1
+Requires: backports
 
 Package: stringi
 Source: CRAN
-Version: 1.0-1
-Hash: cf342bc407bd5daec77ed1009d5244e1
+Version: 1.1.5
+Hash: b6308e49357a0b475f433599e0d8b5eb
 
 Package: stringr
 Source: CRAN
-Version: 1.0.0
-Hash: 2676dd5f88890910962b733b0f9540e1
+Version: 1.2.0
+Hash: 25a86d7f410513ebb7c0bc6a5e16bdc3
 Requires: magrittr, stringi
+
+Package: xml2
+Source: CRAN
+Version: 1.1.1
+Hash: b326a762ddb04eef605cc88987fa71fb
+Requires: BH, Rcpp
