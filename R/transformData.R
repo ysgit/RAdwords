@@ -38,9 +38,9 @@ transformData <- function(data,
     #eliminate row with total values
     if(nrow(data)>0){
       if(data[nrow(data), 1] == "Total"){
-        data <- as.data.frame(data[2:(nrow(data)-1),1])
+          data <- as.data.frame(data[2:(nrow(data)-1),1])
       } else {
-        data <- as.data.frame(data[2:nrow(data), 1])
+          data <- as.data.frame(data[2:nrow(data), 1])
       }
     }
     names(data) <- variableName
@@ -55,7 +55,7 @@ transformData <- function(data,
       }
     }
   }
-  
+
   #change data format of variables
   if("Day" %in% colnames(data)){
     data$Day <- as.Date(data$Day)
@@ -67,11 +67,11 @@ transformData <- function(data,
          "201702" = reportType <- read.csv(paste(system.file(package="RAdwords"),'/extdata/api201702/',report,'.csv',sep=''), sep = ',', encoding = "UTF-8"),
          "201708" = reportType <- read.csv(paste(system.file(package="RAdwords"),'/extdata/api201708/',report,'.csv',sep=''), sep = ',', encoding = "UTF-8")
   )
-  #   else if (apiVersion=="201502"){
-  #     report <- gsub('_','-',report)
-  #     report <- tolower(report)
-  #     reportType <- read.csv(paste(system.file(package="RAdwords"),'/extdata/api201502/',report,'.csv',sep=''), sep = ',', encoding = "UTF-8")
-  #   }
+#   else if (apiVersion=="201502"){
+#     report <- gsub('_','-',report)
+#     report <- tolower(report)
+#     reportType <- read.csv(paste(system.file(package="RAdwords"),'/extdata/api201502/',report,'.csv',sep=''), sep = ',', encoding = "UTF-8")
+#   }
   #transform factor into character
   i <- sapply(data, is.factor)
   data[i] <- lapply(data[i], as.character)
@@ -90,12 +90,12 @@ transformData <- function(data,
       data[,var] <- as.numeric(data[,var])/100 
     }
   }
-  #   perVar <- as.numeric(grep("%",data))
-  #   #kill % and divide by 100
-  #   for(i in perVar){
-  #     data[,i] <- sub("%","",data[,i])
-  #     data[,i] <- as.numeric(data[,i])/100 
-  #   }
+#   perVar <- as.numeric(grep("%",data))
+#   #kill % and divide by 100
+#   for(i in perVar){
+#     data[,i] <- sub("%","",data[,i])
+#     data[,i] <- as.numeric(data[,i])/100 
+#   }
   Behavior = NULL
   #eliminate ',' thousend separater in data and convert values into numeric data
   metricVar <- as.character(subset(reportType, Behavior == 'Metric')$Display.Name)
@@ -118,6 +118,5 @@ transformData <- function(data,
   }
   #eliminate " " spaces in column names
   names(data) <- gsub(" ","",names(data))
-
   data
 }
